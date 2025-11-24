@@ -15,7 +15,7 @@ class AuthService
     public function handleGoogleCallback(): bool
     {
         try {
-            $googleUser = Socialite::driver('google')->stateless()->user();
+            $googleUser = Socialite::driver('google')->user();
 
             $user = User::updateOrCreate(
                 ['email' => $googleUser->getEmail()],
@@ -26,15 +26,10 @@ class AuthService
                     'phone' => null,
                     'role'=>'users',
                 ]
-            
-     
-            $originalLifetime = Config::get('session.lifetime');
-
-            Config::set('session.lifetime',60 );
-
+            );
+    
             Auth::login($user, false);  
-            Config::set('session.lifetime', $originalLifetime);
-
+             session(['google_expires_at' => now()->addSeconds(20)]);
             return true;
         } catch (Exception $e) {
             Log::error('Google Login Error: ' . $e->getMessage());
