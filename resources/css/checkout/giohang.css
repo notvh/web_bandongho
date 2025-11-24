@@ -1,0 +1,757 @@
+        :root {
+           /* --- MÀU SẮC TỪ PROJECT (sanpham.css) --- */
+           --wt-primary-black: #0a0a0a;
+           --wt-secondary-black: #1a1a1a;
+           --wt-dark-gray: #2a2a2a;
+           --wt-medium-gray: #404040;
+           --wt-light-gray: #606060;
+           --wt-border-gray: #333333;
+           --wt-text-white: #ffffff;
+           --wt-text-gray: #b0b0b0;
+           --wt-accent-gold: #d4af37;
+           --wt-hover-gray: #353535;
+           /* --- ÁP DỤNG VÀO BIẾN CỦA CART --- */
+           --whcart-z19a-bg: var(--wt-primary-black);
+           --whcart-z19a-surface: var(--wt-secondary-black);
+           --whcart-z19a-surface-soft: var(--wt-dark-gray);
+           --whcart-z19a-border: var(--wt-border-gray);
+           --whcart-z19a-border-soft: var(--wt-medium-gray);
+           --whcart-z19a-text-main: var(--wt-text-white);
+           --whcart-z19a-text-soft: var(--wt-text-gray);
+           --whcart-z19a-text-muted: var(--wt-light-gray);
+           /* Dùng màu Gold làm accent cho đồng bộ */
+           --whcart-z19a-accent: var(--wt-accent-gold);
+           --whcart-z19a-accent-soft: #eecf6d;
+           /* Màu gold sáng hơn một chút */
+           --whcart-z19a-shadow-soft: 0 15px 40px rgba(0, 0, 0, 0.6);
+           --whcart-z19a-radius-lg: 12px;
+           /* Bo góc giống sanpham.css */
+           --whcart-z19a-radius-md: 8px;
+           --whcart-z19a-radius-sm: 999px;
+           --whcart-z19a-gap: 24px;
+       }
+       
+       * {
+           box-sizing: border-box;
+       }
+       
+       body.whcart_body_z19a {
+           margin: 0;
+           font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+           /* Đổi font thành Poppins */
+           background-color: var(--whcart-z19a-bg);
+           /* Xóa gradient cũ, dùng màu nền đen chuẩn */
+           color: var(--whcart-z19a-text-main);
+           -webkit-font-smoothing: antialiased;
+       }
+       
+       .whcart_page_shell_z19a {
+           min-height: 100vh;
+           display: flex;
+           flex-direction: column;
+       }
+       
+       .whcart_maxwrap_z19a {
+           width: 100%;
+           max-width: 1900px;
+           /* Tăng max-width khớp với main-container */
+           margin: 0 auto;
+           padding: 20px 18px 32px;
+       }
+       
+       @media (min-width: 768px) {
+           .whcart_maxwrap_z19a {
+               padding: 100px 28px 40px;
+               /* Tăng padding top để tránh header fixed */
+           }
+       }
+       /* Header */
+       
+       .whcart_header_z19a {
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           margin-bottom: 28px;
+           /* Bỏ sticky ở đây nếu site chính đã có header fixed, hoặc giữ lại nếu muốn header riêng cho cart */
+           position: relative;
+           z-index: 30;
+           padding-bottom: 10px;
+           border-bottom: 1px solid var(--whcart-z19a-border);
+       }
+       
+       .whcart_header_brand_z19a {
+           display: flex;
+           align-items: center;
+           gap: 10px;
+       }
+       
+       .whcart_header_logo_z19a {
+           width: 34px;
+           height: 34px;
+           border-radius: 8px;
+           border: 1px solid var(--whcart-z19a-border);
+           background: var(--whcart-z19a-surface);
+           display: flex;
+           align-items: center;
+           justify-content: center;
+       }
+       
+       .whcart_header_logo_inner_z19a {
+           width: 18px;
+           height: 18px;
+           border-radius: 999px;
+           border: 1px solid var(--whcart-z19a-accent);
+           /* Viền vàng */
+           position: relative;
+       }
+       
+       .whcart_header_titleblock_z19a {
+           display: flex;
+           flex-direction: column;
+           gap: 4px;
+       }
+       
+       .whcart_header_brandname_z19a {
+           font-size: 18px;
+           letter-spacing: 0.09em;
+           text-transform: uppercase;
+           font-weight: 600;
+           color: var(--whcart-z19a-text-main);
+       }
+       
+       .whcart_header_brandtag_z19a {
+           font-size: 11px;
+           text-transform: uppercase;
+           letter-spacing: 0.27em;
+           color: var(--whcart-z19a-accent);
+           /* Chữ nhỏ màu vàng */
+       }
+       
+       .whcart_header_right_z19a {
+           display: flex;
+           align-items: center;
+           gap: 12px;
+       }
+       
+       .whcart_header_step_z19a {
+           display: none;
+           font-size: 12px;
+           text-transform: uppercase;
+           letter-spacing: 0.18em;
+           color: var(--whcart-z19a-text-muted);
+       }
+       
+       @media (min-width: 768px) {
+           .whcart_header_step_z19a {
+               display: block;
+           }
+       }
+       
+       .whcart_header_step_current_z19a {
+           color: var(--whcart-z19a-accent);
+           font-weight: bold;
+       }
+       
+       .whcart_header_cartpill_z19a {
+           display: flex;
+           align-items: center;
+           gap: 8px;
+           padding: 6px 12px 6px 8px;
+           border-radius: 999px;
+           background: var(--whcart-z19a-surface);
+           border: 1px solid var(--whcart-z19a-border);
+       }
+       
+       .whcart_header_carticonwrap_z19a {
+           width: 28px;
+           height: 28px;
+           border-radius: 999px;
+           background: var(--whcart-z19a-surface-soft);
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           border: 1px solid var(--whcart-z19a-border);
+           position: relative;
+       }
+       
+       .whcart_header_cartbadge_z19a {
+           position: absolute;
+           top: -4px;
+           right: -4px;
+           min-width: 16px;
+           height: 16px;
+           border-radius: 999px;
+           background: var(--whcart-z19a-accent);
+           /* Badge màu vàng */
+           color: var(--wt-primary-black);
+           /* Chữ badge màu đen */
+           font-size: 10px;
+           font-weight: bold;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           padding: 0 4px;
+       }
+       
+       .whcart_header_cartlabel_z19a {
+           font-size: 11px;
+           text-transform: uppercase;
+           letter-spacing: 0.3em;
+           color: var(--whcart-z19a-text-soft);
+       }
+       /* Main layout */
+       
+       .whcart_main_z19a {
+           display: grid;
+           gap: var(--whcart-z19a-gap);
+       }
+       
+       @media (min-width: 960px) {
+           .whcart_main_z19a {
+               grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+               align-items: flex-start;
+           }
+       }
+       /* Cart block */
+       
+       .whcart_cart_block_z19a {
+           /* Nền đen secondary giống sidebar */
+           background: var(--whcart-z19a-surface);
+           border-radius: var(--whcart-z19a-radius-lg);
+           border: 1px solid var(--whcart-z19a-border);
+           box-shadow: var(--whcart-z19a-shadow-soft);
+           padding: 18px 16px 18px;
+           position: relative;
+           overflow: hidden;
+       }
+       
+       @media (min-width: 768px) {
+           .whcart_cart_block_z19a {
+               padding: 22px 22px 22px;
+           }
+       }
+       
+       .whcart_cart_inner_z19a {
+           position: relative;
+       }
+       
+       .whcart_cart_headerline_z19a {
+           display: flex;
+           justify-content: space-between;
+           align-items: baseline;
+           margin-bottom: 18px;
+           gap: 12px;
+           border-bottom: 1px solid var(--whcart-z19a-border);
+           padding-bottom: 15px;
+       }
+       
+       .whcart_cart_title_z19a {
+           font-size: 20px;
+           letter-spacing: 0.16em;
+           text-transform: uppercase;
+           font-weight: 300;
+       }
+       
+       .whcart_cart_subtitle_z19a {
+           font-size: 12px;
+           color: var(--whcart-z19a-text-muted);
+           margin-top: 5px;
+       }
+       
+       .whcart_cart_badgepill_z19a {
+           display: inline-flex;
+           align-items: center;
+           gap: 6px;
+           padding: 4px 10px;
+           border-radius: 999px;
+           border: 1px solid var(--whcart-z19a-border);
+           background: var(--whcart-z19a-surface-soft);
+           font-size: 11px;
+           color: var(--whcart-z19a-text-soft);
+       }
+       
+       .whcart_cart_badge_dot_z19a {
+           width: 6px;
+           height: 6px;
+           border-radius: 999px;
+           background: var(--whcart-z19a-accent);
+       }
+       
+       .whcart_cart_list_z19a {
+           display: flex;
+           flex-direction: column;
+           gap: 14px;
+           margin-bottom: 18px;
+           max-height: 380px;
+           overflow: auto;
+           padding-right: 4px;
+       }
+       /* Scrollbar style giống project */
+       
+       .whcart_cart_list_z19a::-webkit-scrollbar {
+           width: 6px;
+       }
+       
+       .whcart_cart_list_z19a::-webkit-scrollbar-track {
+           background: transparent;
+       }
+       
+       .whcart_cart_list_z19a::-webkit-scrollbar-thumb {
+           background-color: var(--wt-medium-gray);
+           border-radius: 20px;
+       }
+       
+       .whcart_cart_item_z19a {
+           display: grid;
+           grid-template-columns: auto minmax(0, 1.5fr) auto;
+           gap: 16px;
+           padding: 12px 12px;
+           border-radius: 8px;
+           border: 1px solid var(--whcart-z19a-border);
+           /* Nền item hơi sáng hơn nền block */
+           background: var(--whcart-z19a-surface-soft);
+           transition: all 0.28s ease;
+       }
+       
+       .whcart_cart_item_z19a:hover {
+           transform: translateY(-3px);
+           border-color: var(--whcart-z19a-accent);
+           /* Hover viền vàng */
+           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+       }
+       
+       @media (max-width: 640px) {
+           .whcart_cart_item_z19a {
+               grid-template-columns: auto minmax(0, 1fr);
+               grid-template-rows: auto auto;
+           }
+       }
+       
+       .whcart_cart_item_media_z19a {
+           width: 88px;
+           height: 88px;
+           border-radius: 6px;
+           background: var(--wt-primary-black);
+           border: 1px solid var(--whcart-z19a-border);
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           position: relative;
+           overflow: hidden;
+       }
+       
+       .whcart_cart_item_media_ring_z19a {
+           /* Giữ nguyên placeholder ảnh hoặc thay bằng img thật */
+           width: 64px;
+           height: 64px;
+           border-radius: 999px;
+           border: 1px solid var(--whcart-z19a-border-soft);
+           position: relative;
+       }
+       
+       .whcart_cart_item_textblock_z19a {
+           display: flex;
+           flex-direction: column;
+           gap: 6px;
+           align-self: center;
+       }
+       
+       .whcart_cart_item_name_z19a {
+           font-size: 15px;
+           letter-spacing: 0.05em;
+           text-transform: uppercase;
+           font-weight: 500;
+           color: var(--whcart-z19a-text-main);
+       }
+       
+       .whcart_cart_item_desc_z19a {
+           font-size: 12px;
+           color: var(--whcart-z19a-text-soft);
+       }
+       
+       .whcart_cart_item_meta_z19a {
+           display: flex;
+           flex-wrap: wrap;
+           gap: 10px;
+           margin-top: 4px;
+       }
+       
+       .whcart_cart_item_meta_tag_z19a {
+           font-size: 11px;
+           text-transform: uppercase;
+           letter-spacing: 0.1em;
+           color: var(--whcart-z19a-accent);
+           /* Tag màu vàng */
+       }
+       
+       .whcart_cart_item_controls_z19a {
+           display: flex;
+           flex-direction: column;
+           gap: 10px;
+           align-items: flex-end;
+           justify-content: space-between;
+       }
+       
+       @media (max-width: 640px) {
+           .whcart_cart_item_controls_z19a {
+               grid-column: 1 / -1;
+               flex-direction: row;
+               align-items: center;
+               justify-content: space-between;
+           }
+       }
+       
+       .whcart_cart_item_priceblock_z19a {
+           text-align: right;
+       }
+       
+       .whcart_cart_item_price_z19a {
+           font-size: 16px;
+           letter-spacing: 0.05em;
+           font-weight: 600;
+           color: var(--whcart-z19a-text-main);
+       }
+       
+       .whcart_cart_item_price_note_z19a {
+           font-size: 11px;
+           color: var(--whcart-z19a-text-muted);
+       }
+       
+       .whcart_cart_item_qtywrap_z19a {
+           display: inline-flex;
+           align-items: center;
+           border-radius: 4px;
+           border: 1px solid var(--whcart-z19a-border);
+           overflow: hidden;
+           background: var(--wt-primary-black);
+       }
+       
+       .whcart_cart_item_qtybtn_z19a {
+           padding: 6px 10px;
+           font-size: 14px;
+           line-height: 1;
+           color: var(--whcart-z19a-text-soft);
+           background: transparent;
+           border: none;
+           cursor: pointer;
+           transition: color 0.2s;
+       }
+       
+       .whcart_cart_item_qtybtn_z19a:hover {
+           color: var(--whcart-z19a-accent);
+       }
+       
+       .whcart_cart_item_qtyinput_z19a {
+           width: 40px;
+           text-align: center;
+           padding: 5px 0;
+           font-size: 13px;
+           background: transparent;
+           border-left: 1px solid var(--whcart-z19a-border);
+           border-right: 1px solid var(--whcart-z19a-border);
+           border-top: none;
+           border-bottom: none;
+           color: var(--whcart-z19a-text-main);
+           outline: none;
+       }
+       
+       .whcart_cart_item_remove_z19a {
+           font-size: 11px;
+           text-transform: uppercase;
+           letter-spacing: 0.16em;
+           color: var(--whcart-z19a-text-muted);
+           cursor: pointer;
+           padding-bottom: 2px;
+           margin-top: 5px;
+           text-align: right;
+           transition: color 0.2s;
+       }
+       
+       .whcart_cart_item_remove_z19a:hover {
+           color: #ff4d4d;
+           /* Màu đỏ khi hover xóa */
+           text-decoration: underline;
+       }
+       
+       .whcart_cart_footer_z19a {
+           border-top: 1px dashed var(--whcart-z19a-border);
+           /* padding-top: -1000px; */
+           display: flex;
+           flex-wrap: wrap;
+           gap: 10px;
+           align-items: center;
+           justify-content: space-between;
+       }
+       
+       .whcart_cart_footer_link_z19a {
+           font-size: 11px;
+           text-transform: uppercase;
+           letter-spacing: 0.16em;
+           color: var(--whcart-z19a-accent);
+           display: inline-flex;
+           align-items: center;
+           gap: 6px;
+           cursor: pointer;
+           font-weight: 500;
+       }
+       
+       .whcart_cart_footer_hint_z19a {
+           font-size: 11px;
+           color: var(--whcart-z19a-text-muted);
+       }
+       /* Summary */
+       
+       .whcart_summary_block_z19a {
+           /* Nền đen secondary */
+           background: var(--whcart-z19a-surface);
+           border-radius: var(--whcart-z19a-radius-lg);
+           border: 1px solid var(--whcart-z19a-border);
+           box-shadow: var(--whcart-z19a-shadow-soft);
+           padding: 18px 16px 18px;
+           position: relative;
+           overflow: hidden;
+       }
+       
+       @media (min-width: 768px) {
+           .whcart_summary_block_z19a {
+               padding: 22px 22px 22px;
+               position: sticky;
+               top: 100px;
+               /* Sticky khi cuộn */
+           }
+       }
+       
+       .whcart_summary_title_z19a {
+           font-size: 14px;
+           letter-spacing: 0.22em;
+           text-transform: uppercase;
+           margin-bottom: 18px;
+           color: var(--whcart-z19a-text-main);
+           font-weight: 600;
+           border-bottom: 1px solid var(--whcart-z19a-border);
+           padding-bottom: 10px;
+       }
+       
+       .whcart_summary_rows_z19a {
+           display: flex;
+           flex-direction: column;
+           gap: 12px;
+           margin-bottom: 14px;
+       }
+       
+       .whcart_summary_row_z19a {
+           display: flex;
+           justify-content: space-between;
+           align-items: baseline;
+           font-size: 13px;
+           color: var(--whcart-z19a-text-soft);
+       }
+       
+       .whcart_summary_row_label_z19a {
+           text-transform: uppercase;
+           letter-spacing: 0.1em;
+       }
+       
+       .whcart_summary_row_important_z19a {
+           margin-top: 4px;
+           padding-top: 15px;
+           border-top: 1px dashed var(--whcart-z19a-border);
+       }
+       
+       .whcart_summary_row_important_z19a .whcart_summary_row_label_z19a {
+           color: var(--whcart-z19a-text-main);
+           font-weight: 600;
+       }
+       
+       .whcart_summary_row_total_z19a .whcart_summary_row_value_z19a {
+           font-size: 20px;
+           letter-spacing: 0.05em;
+           font-weight: 600;
+           color: var(--whcart-z19a-accent);
+           /* Tổng tiền màu vàng */
+       }
+       
+       .whcart_summary_coupon_z19a {
+           margin: 20px 0;
+       }
+       
+       .whcart_summary_coupon_label_z19a {
+           font-size: 11px;
+           text-transform: uppercase;
+           letter-spacing: 0.16em;
+           color: var(--whcart-z19a-text-muted);
+           margin-bottom: 8px;
+       }
+       
+       .whcart_summary_coupon_fieldrow_z19a {
+           display: flex;
+           gap: 8px;
+       }
+       
+       .whcart_summary_coupon_input_z19a {
+           flex: 1;
+           border-radius: 4px;
+           border: 1px solid var(--whcart-z19a-border);
+           background: var(--wt-primary-black);
+           color: var(--whcart-z19a-text-main);
+           padding: 10px 14px;
+           font-size: 12px;
+           outline: none;
+       }
+       
+       .whcart_summary_coupon_input_z19a:focus {
+           border-color: var(--whcart-z19a-accent);
+       }
+       
+       .whcart_summary_coupon_button_z19a {
+           padding: 8px 16px;
+           border-radius: 4px;
+           border: 1px solid var(--whcart-z19a-border);
+           background: var(--wt-dark-gray);
+           color: var(--whcart-z19a-text-soft);
+           font-size: 11px;
+           text-transform: uppercase;
+           letter-spacing: 0.1em;
+           cursor: pointer;
+           white-space: nowrap;
+           transition: all 0.3s;
+       }
+       
+       .whcart_summary_coupon_button_z19a:hover {
+           border-color: var(--whcart-z19a-accent);
+           color: var(--whcart-z19a-text-main);
+       }
+       
+       .whcart_summary_notice_z19a {
+           font-size: 11px;
+           color: var(--whcart-z19a-text-muted);
+           line-height: 1.5;
+           margin-bottom: 14px;
+           font-style: italic;
+       }
+       
+       .whcart_summary_actions_z19a {
+           display: flex;
+           flex-direction: column;
+           gap: 12px;
+       }
+       
+       @media (min-width: 480px) {
+           .whcart_summary_actions_z19a {
+               flex-direction: row;
+           }
+       }
+       
+       .whcart_summary_btn_primary_z19a,
+       .whcart_summary_btn_secondary_z19a {
+           flex: 1;
+           padding: 12px 16px;
+           border-radius: 4px;
+           /* Bo góc nhỏ cho cứng cáp */
+           border-width: 1px;
+           border-style: solid;
+           font-size: 12px;
+           text-transform: uppercase;
+           letter-spacing: 0.15em;
+           cursor: pointer;
+           text-align: center;
+           transition: all 0.3s ease;
+           white-space: nowrap;
+           font-weight: 600;
+       }
+       /* Nút chính: Style giống wt-add-cart-button trong sanpham.css */
+       
+       .whcart_summary_btn_primary_z19a {
+           background: var(--whcart-z19a-accent);
+           border-color: var(--whcart-z19a-accent);
+           color: var(--wt-primary-black);
+           box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+       }
+       
+       .whcart_summary_btn_primary_z19a:hover {
+           background: transparent;
+           color: var(--whcart-z19a-accent);
+           box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+       }
+       /* Nút phụ: Đen viền xám */
+       
+       .whcart_summary_btn_secondary_z19a {
+           background: transparent;
+           border-color: var(--whcart-z19a-border-soft);
+           color: var(--whcart-z19a-text-soft);
+       }
+       
+       .whcart_summary_btn_secondary_z19a:hover {
+           border-color: var(--whcart-z19a-accent);
+           color: var(--whcart-z19a-text-main);
+       }
+       
+       .whcart_summary_secure_z19a {
+           margin-top: 15px;
+           display: flex;
+           align-items: center;
+           gap: 8px;
+           font-size: 10px;
+           color: var(--whcart-z19a-text-muted);
+           justify-content: center;
+       }
+       
+       .whcart_summary_secure_icon_z19a {
+           width: 14px;
+           height: 14px;
+           border-radius: 2px;
+           border: 1px solid var(--whcart-z19a-border-soft);
+           display: flex;
+           align-items: center;
+           justify-content: center;
+       }
+       /* Footer mini */
+       
+       .whcart_footer_micro_z19a {
+           margin-top: 30px;
+           font-size: 11px;
+           color: var(--whcart-z19a-text-muted);
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           gap: 10px;
+           border-top: 1px solid var(--whcart-z19a-border);
+           padding-top: 20px;
+       }
+       
+       .whcart_footer_micro_links_z19a {
+           display: flex;
+           flex-wrap: wrap;
+           gap: 15px;
+       }
+       
+       .whcart_footer_micro_link_z19a {
+           text-transform: uppercase;
+           letter-spacing: 0.1em;
+           cursor: pointer;
+           transition: color 0.2s;
+       }
+       
+       .whcart_footer_micro_link_z19a:hover {
+           color: var(--whcart-z19a-accent);
+       }
+       
+       .whcart_footer_micro_year_z19a {
+           opacity: 0.6;
+       }
+       
+       @media (max-width: 640px) {
+           .whcart_footer_micro_z19a {
+               flex-direction: column;
+               align-items: center;
+               text-align: center;
+           }
+       }
+       
+       .whcart_page_shell_z19a {
+           margin-top: 0px;
+       }
+       
+       .whcart_main_z19a {
+           margin-top: 50px;
+       }

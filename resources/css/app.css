@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* === BẮT ĐẦU THAY THẾ TỪ ĐÂY === */
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+html {
+    overflow-y: scroll;
+    /* Luôn hiện thanh cuộn dọc */
+}
+
+body {
+    /* Quan trọng 1: Đặt chiều cao tối thiểu bằng chiều cao của viewport */
+    min-height: 100vh;
+    /* Quan trọng 2: Sử dụng Flexbox để xếp chồng các phần tử theo chiều dọc */
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    /* Quan trọng 3: Cho phép phần nội dung chính kéo giãn */
+    flex-grow: 1;
+    padding-top: 100px;
+}
+
+footer {
+    width: 100vw;
+    margin-top: 0;
+    /* Xóa margin-top cũ */
+    background-color: #000;
+    color: #fff;
+    border-top: 100px
+}
+
+@import './dangnhap.css';
+@import './header.css';
+@import './footer.css';
