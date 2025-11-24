@@ -15,12 +15,13 @@ class GoogleSessionExpire
     {
         if (Auth::check()) {
 
-            $expireAt = session('google_expires_at');
+          $expireAt = Session::get('google_expires_at');
+
 
             if ($expireAt && now()->greaterThan($expireAt)) {
 
                 Auth::logout();
-                Session::flush();
+                Session::forget('google_expires_at');
 
                 return redirect()->route('login')
                     ->with('error', 'Phiên đăng nhập Google đã hết hạn.');

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 use Exception;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 class AuthService
 {
     public function handleGoogleCallback(): bool
@@ -28,8 +29,8 @@ class AuthService
                 ]
             );
     
-            Auth::login($user, false);  
-            session(['google_expires_at' => now()->addMinutes(60)]);
+            Auth::login($user, remember: false);  
+            Session::put('google_expires_at', now()->addSeconds(20));
             return true;
         } catch (Exception $e) {
             Log::error('Google Login Error: ' . $e->getMessage());
