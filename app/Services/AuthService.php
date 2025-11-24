@@ -26,18 +26,13 @@ class AuthService
                     'phone' => null,
                     'role'=>'users',
                 ]
-            );
-
-            // Lưu giá trị session lifetime gốc
+            
+     
             $originalLifetime = Config::get('session.lifetime');
 
-            // Override session lifetime cho login Google: 20 giây = 0.33 phút
-            Config::set('session.lifetime', 0.33);
+            Config::set('session.lifetime',60 );
 
-            // Login user (session lưu vào DB, sống 20 giây)
-            Auth::login($user, false);
-
-            // Restore giá trị gốc để session khác không bị ảnh hưởng
+            Auth::login($user, false);  
             Config::set('session.lifetime', $originalLifetime);
 
             return true;
