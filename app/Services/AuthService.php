@@ -30,7 +30,7 @@ class AuthService
             );
     
             Auth::login($user, remember: false);  
-            Session::put('google_expires_at', now()->addSeconds(20));
+            Session::put('google_expires_at', now()->addMinutes(60));
             return true;
         } catch (Exception $e) {
             Log::error('Google Login Error: ' . $e->getMessage());
